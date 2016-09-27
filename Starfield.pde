@@ -1,7 +1,7 @@
 //your code here
 void setup()
 {
-	//your code here
+	size(400,400);
 }
 void draw()
 {
@@ -9,7 +9,20 @@ void draw()
 }
 class NormalParticle
 {
-	//your code here
+	double nX;
+	double nY;
+	double nAngle;
+	double nSpeed;
+	int nColor;
+
+	NormalParticle() 
+	{
+		nX = (int)(Math.random()*400);
+		nY = (int)(Math.random()*400);
+		nAngle = 30;
+		nSpeed = Math.random()*10;
+	}
+
 }
 interface Particle
 {
