@@ -1,18 +1,24 @@
-//your code here
+NormalParticle stars;
+NormalParticle [] lots;
+
 void setup()
 {
 	size(400,400);
+	star = new NormalParticle();
+	lots = new NormalParticle[1000];
+	for(int i = 0;i <= lots.length; i++)
+	{
+		
+	}
 }
 void draw()
 {
-	//your code here
+	background(0);
+	
 }
 class NormalParticle
 {
-	double nX;
-	double nY;
-	double nAngle;
-	double nSpeed;
+	double nX, nY, nAngle, nSpeed;
 	int nColor;
 
 	NormalParticle() 
@@ -21,6 +27,19 @@ class NormalParticle
 		nY = (int)(Math.random()*400);
 		nAngle = 30;
 		nSpeed = Math.random()*10;
+		nColor = color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+	}
+
+	void show()
+	{
+		fill(nColor);
+		ellipse((int)nX,(int)nY, 10,10);
+	}
+
+	void move() 
+	{
+		nX = nX + (Math.cos((int)(nAngle))*(int)nSpeed);
+		nY = nY + (Math.sin((int)(nAngle))*(int)nSpeed);
 	}
 
 }
