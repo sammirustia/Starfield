@@ -4,16 +4,23 @@ NormalParticle [] lots;
 void setup()
 {
 	size(400,400);
-	star = new NormalParticle();
+	stars = new NormalParticle();
 	lots = new NormalParticle[1000];
 	for(int i = 0;i <= lots.length; i++)
 	{
-		
+		lots[i] = new NormalParticle();
 	}
 }
 void draw()
 {
 	background(0);
+	stars.move();
+	stars.show();
+	for(int i = 0;i < lots.length;i++)
+	{
+		lots[i].move();
+		lots[i].show();
+	}
 	
 }
 class NormalParticle
@@ -25,22 +32,24 @@ class NormalParticle
 	{
 		nX = (int)(Math.random()*400);
 		nY = (int)(Math.random()*400);
-		nAngle = 30;
+		nAngle = Math.PI;
 		nSpeed = Math.random()*10;
 		nColor = color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
 	}
-
+	
+	void move() 
+	{
+		nX = nX + (Math.cos((int)(nAngle))*(int)nSpeed);
+		nY = nY + (Math.sin((int)(nAngle))*(int)nSpeed);
+	}
+	
 	void show()
 	{
 		fill(nColor);
 		ellipse((int)nX,(int)nY, 10,10);
 	}
 
-	void move() 
-	{
-		nX = nX + (Math.cos((int)(nAngle))*(int)nSpeed);
-		nY = nY + (Math.sin((int)(nAngle))*(int)nSpeed);
-	}
+	
 
 }
 interface Particle
