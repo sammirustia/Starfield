@@ -3,7 +3,7 @@ Particle [] stars;
 void setup()
 {
 	size(600,600);
-	stars = new Particle[100];
+	stars = new Particle[1000];
 	for(int i = 0;i < stars.length; i++)
 	{
 		stars[i] = new NormalParticle();
