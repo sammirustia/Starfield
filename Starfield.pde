@@ -7,9 +7,10 @@ void setup()
 	for(int i = 0;i < stars.length; i++)
 	{
 		stars[i] = new NormalParticle();
+		
+	}
 		stars[0] = new OddballParticle();
 		stars[1] = new JumboParticle();
-	}
 	
 }
 void draw()
@@ -32,16 +33,15 @@ class NormalParticle implements Particle
 	{
 		nX = 300;
 		nY = 300;
-		nAngle = (11*Math.PI);
-		nSpeed = 10;
+		nAngle = (Math.random()*2*Math.PI);
+		nSpeed = (Math.random()*2);
 		nColor = color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
 	}
 	
 	public void move() 
 	{
-		nX = nX + (Math.cos((int)(nAngle))*(int)nSpeed);
-		nY = nY + (Math.sin((int)(nAngle))*(int)nSpeed);
-		nAngle = nAngle + (Math.random()*(Math.PI / 12));
+		nX = nX + (Math.cos((nAngle))*nSpeed);
+		nY = nY + (Math.sin((nAngle))*nSpeed);
 	}
 	
 	public void show()
@@ -49,8 +49,6 @@ class NormalParticle implements Particle
 		fill(nColor);
 		ellipse((int)nX,(int)nY, 10,10);
 	}
-
-	
 
 }
 interface Particle
@@ -91,6 +89,7 @@ class JumboParticle extends NormalParticle
 	{
 
 	}
+	
 	void show()
 	{
 		ellipse((float)nX,(float)nY,50,50);
